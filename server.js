@@ -1,5 +1,14 @@
 'use strict';
 const bcrypt = require('bcrypt');
+const myPlaintextPassword = "password123";
+const saltRounds = 12;
+
+bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
+  console.log(hash);
+  bcrypt.compare(myPlaintextPassword, hash, (err, res) => {
+    console.log(res);
+  });
+});
 const express     = require('express');
 const bodyParser  = require('body-parser');
 const fccTesting  = require('./freeCodeCamp/fcctesting.js');
